@@ -32,9 +32,57 @@ export const POST = async (req: NextRequest) => {
       console.log("Customer details:", session.customer_details);
 
       if (session.customer_details?.email) {
-        console.log(
-          `Simulated email: Customer bought successfully! Name: ${session.customer_details.name}, Email: ${session.customer_details.email}`
-        );
+        const customerName = session.customer_details.name || "there";
+
+        if (session.metadata) {
+          console.log("With metadata:", session.metadata);
+          if (session.metadata.location) {
+            console.log(
+              `Customer location from metadata: ${session.metadata.location}`
+            );
+            if (session.metadata.location === "online") {
+              console.log(
+                `
+                Simulated email being sent to email: ${session.customer_details.email}
+                Hello ${customerName}!
+                Thank you for your purchase!
+                Here are your ONLINE event access details.
+                `
+              );
+            } else if (session.metadata.location === "inPerson") {
+              console.log(
+                `
+                Simulated email being sent to email: ${session.customer_details.email}
+                Hello ${customerName}!
+                Thank you for your purchase!
+                Here are your IN-PERSON event access details.
+                `
+              );
+            } else if (session.metadata.location === "unknown") {
+              console.log(
+                `
+                Simulated email being sent to email: ${session.customer_details.email}
+                Hello ${customerName}!
+                Thank you for your purchase!
+                I could not determine your event location.
+                I will check your session details and get back to you shortly.
+                `
+              );
+
+              console.log(
+                "Sending email to myself: Unknown location provided in metadata. Attaching session details."
+              );
+            }
+          } else {
+            console.log(
+              "Sending email to myself: No location in metadata. Attaching session details."
+            );
+          }
+        } else {
+          console.log(
+            "Sending email to myself: No metadata in successful session. Attaching session details."
+          );
+        }
       } else {
         console.log(
           "Sending email to myself: Customer email not provided. Attaching session details."
