@@ -29,19 +29,17 @@ export const POST = async (req: NextRequest) => {
 
       console.log("✅ Checkout session completed event received!");
       console.log("Full session object:", session);
-
-      let customerName = "Unknown";
-
       console.log("Customer details:", session.customer_details);
 
-      if (session.customer_details?.name) {
-        console.log("Customer name found in customer_details.");
-        customerName = session.customer_details.name;
+      if (session.customer_details?.email) {
+        console.log(
+          `Simulated email: Customer bought successfully! Name: ${session.customer_details.name}, Email: ${session.customer_details.email}`
+        );
+      } else {
+        console.log(
+          "Sending email to myself: Customer email not provided. Attaching session details."
+        );
       }
-
-      console.log(
-        `Simulated email: Customer bought successfully! Name: ${customerName}, Email: ${session.customer_email}`
-      );
       break;
 
     case "checkout.session.expired":
