@@ -15,36 +15,46 @@ export async function sendZeptomail({
   text,
   html,
 }: SendZeptomailParams) {
-  const url = process.env.ZEPTOMAIL_URL;
+  const urlEnv = process.env.ZEPTOMAIL_URL;
   const token = process.env.ZEPTOMAIL_TOKEN;
   const from = process.env.ZEPTOMAIL_FROM;
 
-  if (!url || !token || !from) {
+  if (!urlEnv || !token || !from) {
     throw new Error("Missing ZeptoMail environment variables");
   }
 
-  const client = new SendMailClient({ url, token });
+  const urlsToTest = [
+    urlEnv, // as set in secrets
+    urlEnv.endsWith("/") ? urlEnv.slice(0, -1) : urlEnv + "/", // add/remove trailing slash
+    "https://api.zeptomail.eu/v1.1/email", // full path with API version
+  ];
 
-  try {
-    await client.sendMail({
-      from,
-      to: to.map((recipient) => ({
-        email_address: {
-          address: recipient.address,
-          name: recipient.name,
-        },
-      })),
-      subject,
-      textbody: text,
-      ...(html ? { htmlbody: html } : {}),
-    });
+  for (const url of urlsToTest) {
+    console.log("Trying ZeptoMail URL:", url);
+    const client = new SendMailClient({ url, token });
 
-    console.log("Email sent via ZeptoMail:", {
-      to: to.map((r) => r.address),
-      subject,
-    });
-  } catch (error) {
-    console.error("Failed to send email via ZeptoMail:", error);
+    try {
+      await client.sendMail({
+        from,
+        to: to.map((recipient) => ({
+          email_address: {
+            address: recipient.address,
+            name: recipient.name,
+          },
+        })),
+        subject,
+        textbody: text,
+        ...(html ? { htmlbody: html } : {}),
+      });
+
+      console.log("✅ Email sent via ZeptoMail with URL:", url, {
+        to: to.map((r) => r.address),
+        subject,
+      });
+      break; // stop after the first successful attempt
+    } catch (error) {
+      console.error("❌ Failed with URL:", url, error);
+    }
   }
 }
 
