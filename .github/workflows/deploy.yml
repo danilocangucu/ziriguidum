@@ -99,6 +99,9 @@ jobs:
             cat > ~/ziriguidum_app/.env.production <<EOL
             STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}
             STRIPE_WEBHOOK_SECRET=${{ secrets.STRIPE_WEBHOOK_SECRET }}
+            ZEPTOMAIL_URL=${{ secrets.ZEPTOMAIL_URL }}
+            ZEPTOMAIL_TOKEN=${{ secrets.ZEPTOMAIL_TOKEN }}
+            ZEPTOMAIL_FROM=${{ secrets.ZEPTOMAIL_FROM }}
             EOL
 
             echo "🚀 Starting new PM2 app..."
