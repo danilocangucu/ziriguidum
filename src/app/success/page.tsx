@@ -32,10 +32,11 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
     }
 
     const email = session?.customer_details?.email ?? "the email you used to make the payment";
+    const name = session?.customer_details?.name ?? null;
 
     return (
         <main>
-            <h1>Obrigado!</h1>
+            <h1>Obrigado{name ? `, ${name}` : ""}!</h1>
             <p>
                 Thank you for joining the Ziriguidum mini-course!
             </p>
