@@ -1,0 +1,104 @@
+name: Deploy Next.js to EC2 (Ziriguidum)
+on:
+  push:
+    branches:
+      - main  # deploy when pushing to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1️⃣ Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3️⃣ Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4️⃣ Build Next.js project
+      - name: Build project
+        run: npm run build
+
+      # 5️⃣ Archive production files
+      - name: Archive build
+        run: tar -czf build.tar.gz .next package.json package-lock.json public
+
+      # 6️⃣ Copy build to EC2 temporary folder
+      - name: Copy to EC2 temp folder
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "build.tar.gz"
+          target: "~/ziriguidum_tmp/"
+
+      # 7️⃣ SSH to EC2 and deploy (with backup & safe swap)
+      - name: Deploy on EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            set -e
+            echo "📁 Preparing temporary folder..."
+            mkdir -p ~/ziriguidum_tmp
+            cd ~/ziriguidum_tmp
+
+            echo "📦 Extracting build..."
+            tar -xzf build.tar.gz
+            rm build.tar.gz
+
+            echo "📦 Installing production dependencies..."
+            npm ci --omit=dev
+
+            echo "🔍 Validating build..."
+            if [ ! -d ".next" ]; then
+              echo "❌ ERROR: .next folder missing after extraction"
+              exit 1
+            fi
+
+            echo "🛑 Stopping PM2 app..."
+            pm2 stop ziriguidum-app || true
+
+            echo "📂 Creating backup of current version..."
+            if [ -d ~/ziriguidum_app ]; then
+              rm -rf ~/ziriguidum_app_backup
+              mv ~/ziriguidum_app ~/ziriguidum_app_backup
+            fi
+
+            echo "🚚 Promoting new build..."
+            mv ~/ziriguidum_tmp ~/ziriguidum_app
+
+            echo "🚀 Starting new PM2 app..."
+            if pm2 start npm --name "ziriguidum-app" -- run start -- -p 3002; then
+              echo "✅ New version is running successfully!"
+              pm2 save
+
+              echo "🧹 Cleaning up old stopped PM2 processes..."
+              pm2 ls --no-color | awk '/stopped/ {print $2}' | xargs -r pm2 delete
+
+              echo "🧹 Deleting old backup..."
+              rm -rf ~/ziriguidum_app_backup
+
+            else
+              echo "❌ New version FAILED to start. Rolling back..."
+              rm -rf ~/ziriguidum_app
+              mv ~/ziriguidum_app_backup ~/ziriguidum_app
+              pm2 start npm --name "ziriguidum-app" -- run start -- -p 3002
+              pm2 save
+              echo "♻️ Rollback complete."
+              exit 1
+            fi
+
+            echo "🧹 Cleaning tmp folder..."
+            rm -rf ~/ziriguidum_tmp
+            echo "✅ Deployment completed successfully!"
