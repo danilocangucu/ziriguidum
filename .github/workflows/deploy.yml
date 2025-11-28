@@ -39,7 +39,12 @@ jobs:
 
       # 5️⃣ Archive production files
       - name: Archive build
-        run: tar -czf build.tar.gz .next package.json package-lock.json public
+        run: |
+            if [ -d public ]; then
+                tar -czf build.tar.gz .next package.json package-lock.json public
+            else
+                tar -czf build.tar.gz .next package.json package-lock.json
+            fi
 
       # 6️⃣ Copy build to EC2 temporary folder
       - name: Copy to EC2 temp folder
