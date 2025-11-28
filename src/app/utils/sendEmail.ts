@@ -33,12 +33,14 @@ export async function sendZeptomail({
         address: senderEmail,
         name: "Danilo Canguçu",
       },
-      to: {
-        email_address: {
-          address: recipient.email,
-          name: recipient.name,
+      to: [
+        {
+          email_address: {
+            address: recipient.email,
+            name: recipient.name,
+          },
         },
-      },
+      ],
       subject,
       textbody: text,
       ...(html ? { htmlbody: html } : {}),
@@ -106,7 +108,7 @@ Danilo
     text: `
     A new purchase was made by ${
       name || "Unknown Customer"
-    } (${email})\n\nCourse: ${locationLine}
+    } (${email})\n\nCourse: ${location}
     `,
     html: `
     <p>
@@ -115,7 +117,7 @@ Danilo
       (${email})
     </p>
     <p>
-      Course: ${locationLine}
+      Course: ${location}
     </p>
     `,
   });
