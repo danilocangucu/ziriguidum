@@ -94,6 +94,11 @@ jobs:
             echo "🚚 Promoting new build..."
             mv ~/ziriguidum_tmp ~/ziriguidum_app
 
+            echo "📄 Creating .env.production with STRIPE_SECRET_KEY..."
+            cat > ~/ziriguidum_app/.env.production <<EOL
+            STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}
+            EOL
+
             echo "🚀 Starting new PM2 app..."
             if pm2 start npm --name "ziriguidum-app" -- run start -- -p 3002; then
               echo "✅ New version is running successfully!"
