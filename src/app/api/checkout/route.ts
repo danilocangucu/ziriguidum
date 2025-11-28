@@ -1,3 +1,4 @@
+import { getProductLocationByPriceId } from "@/app/utils/products";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -27,6 +28,9 @@ export async function POST(req: NextRequest) {
         "mobilepay",
       ],
       line_items: [{ price: priceId, quantity: 1 }],
+      metadata: {
+        ...getProductLocationByPriceId(priceId),
+      },
       success_url: `${req.headers.get(
         "origin"
       )}/success?session_id={CHECKOUT_SESSION_ID}`,
@@ -34,6 +38,9 @@ export async function POST(req: NextRequest) {
         "origin"
       )}/cancel?session_id={CHECKOUT_SESSION_ID}`,
     });
+
+    console.log("Created Stripe checkout session:", session.id);
+    console.log("Session metadata:", session.metadata);
 
     return NextResponse.json({ url: session.url });
   } catch (err) {

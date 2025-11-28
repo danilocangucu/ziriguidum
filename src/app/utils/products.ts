@@ -85,3 +85,19 @@ export function formatTierDates(startDate: Date, endDate: Date): string {
   // If different months: "22.12–11.01"
   return `${startDay}.${startMonth}–${endDay}.${endMonth}`;
 }
+
+export function getProductLocationByPriceId(priceId: string): {
+  location: string;
+} {
+  for (const [location, product] of Object.entries(products) as [
+    "inPerson" | "online",
+    Product
+  ][]) {
+    for (const tier of Object.values(product.tiers)) {
+      if (tier.priceId === priceId) {
+        return { location };
+      }
+    }
+  }
+  return { location: "unknown" };
+}
