@@ -1,11 +1,10 @@
+import { sendPurchaseConfirmationEmail } from "@/app/utils/sendEmail";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export const POST = async (req: NextRequest) => {
-  console.log("🚨 Webhook endpoint was called!");
-
   const sig = req.headers.get("stripe-signature")!;
 
   const body = await req.text();
@@ -27,56 +26,22 @@ export const POST = async (req: NextRequest) => {
     case "checkout.session.completed":
       const session = event.data.object as Stripe.Checkout.Session;
 
-      console.log("✅ Checkout session completed event received!");
-      console.log("Full session object:", session);
-      console.log("Customer details:", session.customer_details);
-
       if (session.customer_details?.email) {
         const customerName = session.customer_details.name || "there";
 
         if (session.metadata) {
-          console.log("With metadata:", session.metadata);
-          if (session.metadata.location) {
+          if (session.metadata?.location) {
             console.log(
-              `Customer location from metadata: ${session.metadata.location}`
+              `✅ Checkout session completed: ${session.id}. Sending confirmation email to ${session.customer_details.email}`
             );
-            if (session.metadata.location === "online") {
-              console.log(
-                `
-                Simulated email being sent to email: ${session.customer_details.email}
-                Hello ${customerName}!
-                Thank you for your purchase!
-                Here are your ONLINE event access details.
-                `
-              );
-            } else if (session.metadata.location === "inPerson") {
-              console.log(
-                `
-                Simulated email being sent to email: ${session.customer_details.email}
-                Hello ${customerName}!
-                Thank you for your purchase!
-                Here are your IN-PERSON event access details.
-                `
-              );
-            } else if (session.metadata.location === "unknown") {
-              console.log(
-                `
-                Simulated email being sent to email: ${session.customer_details.email}
-                Hello ${customerName}!
-                Thank you for your purchase!
-                I could not determine your event location.
-                I will check your session details and get back to you shortly.
-                `
-              );
-
-              console.log(
-                "Sending email to myself: Unknown location provided in metadata. Attaching session details."
-              );
-            }
-          } else {
-            console.log(
-              "Sending email to myself: No location in metadata. Attaching session details."
-            );
+            await sendPurchaseConfirmationEmail({
+              email: session.customer_details.email!,
+              name: customerName,
+              location: session.metadata.location as
+                | "online"
+                | "inPerson"
+                | "unknown",
+            });
           }
         } else {
           console.log(
