@@ -39,9 +39,6 @@ export async function POST(req: NextRequest) {
       )}/cancel?session_id={CHECKOUT_SESSION_ID}`,
     });
 
-    console.log("Created Stripe checkout session:", session.id);
-    console.log("Session metadata:", session.metadata);
-
     return NextResponse.json({ url: session.url });
   } catch (err) {
     console.error("Error in /api/checkout:", err);
