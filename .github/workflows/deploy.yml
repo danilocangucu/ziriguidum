@@ -102,6 +102,7 @@ jobs:
             ZEPTOMAIL_URL="${{ secrets.ZEPTOMAIL_URL }}"
             ZEPTOMAIL_TOKEN=${{ secrets.ZEPTOMAIL_TOKEN }}
             ZEPTOMAIL_FROM=${{ secrets.ZEPTOMAIL_FROM }}
+            ZEPTOMAIL_MY_ADDRESS=${{ secrets.ZEPTOMAIL_MY_ADDRESS }}
             EOL
 
             echo "🚀 Starting new PM2 app..."

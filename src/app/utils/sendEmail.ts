@@ -3,58 +3,49 @@
 import { SendMailClient } from "zeptomail";
 
 type SendZeptomailParams = {
-  to: Array<{ address: string; name: string }>;
+  recipient: { email: string; name: string };
   subject: string;
   text: string;
   html?: string;
 };
 
+const myEmail = process.env.ZEPTOMAIL_MY_ADDRESS;
+
 export async function sendZeptomail({
-  to,
+  recipient,
   subject,
   text,
   html,
 }: SendZeptomailParams) {
-  const urlEnv = process.env.ZEPTOMAIL_URL;
+  const url = process.env.ZEPTOMAIL_URL;
   const token = process.env.ZEPTOMAIL_TOKEN;
-  const from = process.env.ZEPTOMAIL_FROM;
+  const senderEmail = process.env.ZEPTOMAIL_FROM;
 
-  if (!urlEnv || !token || !from) {
+  if (!url || !token || !senderEmail) {
     throw new Error("Missing ZeptoMail environment variables");
   }
 
-  const urlsToTest = [
-    urlEnv, // as set in secrets
-    urlEnv.endsWith("/") ? urlEnv.slice(0, -1) : urlEnv + "/", // add/remove trailing slash
-    "https://api.zeptomail.eu/v1.1/email", // full path with API version
-  ];
+  const client = new SendMailClient({ url, token });
 
-  for (const url of urlsToTest) {
-    console.log("Trying ZeptoMail URL:", url);
-    const client = new SendMailClient({ url, token });
-
-    try {
-      await client.sendMail({
-        from,
-        to: to.map((recipient) => ({
-          email_address: {
-            address: recipient.address,
-            name: recipient.name,
-          },
-        })),
-        subject,
-        textbody: text,
-        ...(html ? { htmlbody: html } : {}),
-      });
-
-      console.log("✅ Email sent via ZeptoMail with URL:", url, {
-        to: to.map((r) => r.address),
-        subject,
-      });
-      break; // stop after the first successful attempt
-    } catch (error) {
-      console.error("❌ Failed with URL:", url, error);
-    }
+  try {
+    await client.sendMail({
+      from: {
+        address: senderEmail,
+        name: "Danilo Canguçu",
+      },
+      to: {
+        email_address: {
+          address: recipient.email,
+          name: recipient.name,
+        },
+      },
+      subject,
+      textbody: text,
+      ...(html ? { htmlbody: html } : {}),
+    });
+  } catch (error) {
+    console.error("Error print:", error);
+    console.dir(error, { depth: null, colors: true });
   }
 }
 
@@ -65,7 +56,7 @@ export const sendPurchaseConfirmationEmail = async (params: {
 }) => {
   const { email, name, location } = params;
 
-  const subject = "Your Ziriguidum Mini-Course Confirmation";
+  const subject = "Ziriguidum Mini-Course - Purchase Confirmation";
 
   const locationLine =
     location === "online"
@@ -96,9 +87,37 @@ Danilo
 `;
 
   await sendZeptomail({
-    to: [{ address: email, name: name || "" }],
+    recipient: { email: email, name: name || "" },
     subject,
     text,
     html,
   });
+
+  if (!myEmail) {
+    console.warn(
+      "ZEPTOMAIL_MY_ADDRESS is not set. Skipping internal copy email."
+    );
+    return;
+  }
+
+  await sendZeptomail({
+    recipient: { email: myEmail, name: "Danilo" },
+    subject: `Purchase by ${name || "Unknown Customer"}`,
+    text: `
+    A new purchase was made by ${
+      name || "Unknown Customer"
+    } (${email})\n\nCourse: ${locationLine}
+    `,
+    html: `
+    <p>
+      A new purchase was made by 
+      <strong>${name || "Unknown Customer"}</strong>
+      (${email})
+    </p>
+    <p>
+      Course: ${locationLine}
+    </p>
+    `,
+  });
 };
+
