@@ -5,15 +5,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: NextRequest) {
   try {
-    console.log("Incoming checkout request:", req.body);
-    console.log("Stripe key exists?", !!process.env.STRIPE_SECRET_KEY);
-
     const { priceId } = (await req.json()) as {
       priceId: string;
     };
 
     if (!priceId) {
-      console.error("No priceId provided");
       return NextResponse.json(
         { error: "Price ID is required" },
         { status: 400 }
@@ -38,8 +34,6 @@ export async function POST(req: NextRequest) {
         "origin"
       )}/cancel?session_id={CHECKOUT_SESSION_ID}`,
     });
-
-    console.log("Created checkout session:", session);
 
     return NextResponse.json({ url: session.url });
   } catch (err) {
