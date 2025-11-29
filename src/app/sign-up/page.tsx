@@ -1,3 +1,4 @@
+import { NavBar } from "../components/shared/NavBar";
 import Help from "../components/SignUp/Help";
 import Intro from "../components/SignUp/Intro";
 import RegistrationClosed from "../components/SignUp/RegistrationClosed";
@@ -12,30 +13,34 @@ export default function Page() {
   const onlineTier = getActiveTier(products.online.tiers, today);
 
   return (
-    <main>
-      <Intro />
+    <>
+      <NavBar isSignUpPage={true} />
 
-      {onlineTier && inPersonTier ? (
-        <>
-          <TierSection
-            title="Online"
-            description="Join us from anywhere"
-            schedule="Sessions take place every Monday in February 2026, from 18.30 to 19.30 (CET)."
-            currentTier={onlineTier}
-            solidarityTier={products.online.tiers.solidarity}
-          />
-          <TierSection
-            title="In Person"
-            description="Come join us in Berlin, in Neukölln."
-            schedule="Sessions are held every Tuesday in February 2026, from 18.30 to 19.30."
-            currentTier={inPersonTier}
-            solidarityTier={products.inPerson.tiers.solidarity}
-          />
-          <Help />
-        </>
-      ) : (
-        <RegistrationClosed />
-      )}
+      <main className="u-container">
+        <Intro />
+
+        {onlineTier && inPersonTier ? (
+          <>
+            <TierSection
+              title="Online"
+              description="Join us from anywhere"
+              schedule="Sessions take place every Monday in February 2026, from 18.30 to 19.30 (CET)."
+              currentTier={onlineTier}
+              solidarityTier={products.online.tiers.solidarity}
+            />
+            <TierSection
+              title="In Person"
+              description="Come join us in Berlin, in Neukölln."
+              schedule="Sessions are held every Tuesday in February 2026, from 18.30 to 19.30."
+              currentTier={inPersonTier}
+              solidarityTier={products.inPerson.tiers.solidarity}
+            />
+            <Help />
+          </>
+        ) : (
+          <RegistrationClosed />
+        )}
     </main>
+    </>
   );
 }
