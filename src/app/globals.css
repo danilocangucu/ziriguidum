@@ -6,6 +6,10 @@ body {
     background-color: var(--color-primary);
 }
 
+body main {
+    padding-top: var(--navbar-height);
+}
+
 header ul {
     list-style: none;
     padding: 0;
@@ -14,37 +18,56 @@ header ul {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-lemurmure), serif;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 h1 {
     font-size: var(--step-5);
-    margin-bottom: var(--space-s);
     line-height: calc(var(--step-5) * 1.2);
+    padding-top: var(--space-m);
+    margin-bottom: var(--space-s);
+}
+
+footer h1 {
+    padding-top: var(--space-l);
+    font-size: var(--step-7);
+      color: var(--color-tertiary);
+  -webkit-text-stroke: var(--ziriguidum-stroke) black;
+}
+
+footer p {
+    font-size: var(--step--1);
 }
 
 h2 {
     font-size: var(--step-4);
-    margin-bottom: var(--space-s);
     line-height: calc(var(--step-4) * 1.2);
+    padding-top: var(--space-m);
+    margin-bottom: var(--space-s);
 }
 
 h3 {
     font-size: var(--step-3);
-    margin-bottom: var(--space-s);
     line-height: calc(var(--step-3) * 1.2);
+    padding-top: var(--space-m);
+    margin-bottom: var(--space-s);
 }
 
 a {
     color: inherit;
-    text-underline-offset: calc(var(--space-3xs) / 2);
+    text-underline-offset: calc(var(--space-3xs) / 1.4);
 }
 
 
 :root {
   /* Colours */
     --color-primary: #A5E9BD;
-    --color-secondary: #e37400;
+    --color-secondary: #B1E7F9;
     --color-tertiary: #F9D949;
+
+    --ziriguidum-stroke: clamp(0.03rem, 0.03rem + 0.08vw, 0.0875rem);
+    --navbar-height: calc(var(--space-s) + var(--step-3) + var(--space-s));
 
   /* Step -2: 12.5px → 12.8px */
   --step--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
@@ -62,7 +85,12 @@ a {
   --step-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
   /* Step 5: 44.7898px → 61.0352px */
   --step-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
-
+  /* Step 6: 53.7477px → 76.2939px */
+  --step-6: clamp(3.3592rem, 2.7828rem + 2.5621vw, 4.7684rem);
+  /* Step 7: 64.4973px → 95.3674px */
+  --step-7: clamp(4.0311rem, 3.2418rem + 3.508vw, 5.9605rem);
+  /* Step 8: 77.3967px → 119.2093px */
+  --step-8: clamp(4.8373rem, 3.7682rem + 4.7514vw, 7.4506rem);
 
 /* @link https://utopia.fyi/space/calculator?c=360,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
@@ -128,6 +156,22 @@ a {
   gap: var(--grid-gutter);
 }
 
-.color-bg-secondary {
+.bg-color-secondary {
   background-color: var(--color-secondary);
+}
+
+.bg-color-white {
+  background-color: #FFFFFF;
+}
+
+.padding-bottom-3xs {
+  padding-bottom: var(--space-3xs);
+}
+
+.padding-bottom-xs {
+  padding-bottom: var(--space-xs);
+}
+
+.padding-bottom-s {
+  padding-bottom: var(--space-s);
 }

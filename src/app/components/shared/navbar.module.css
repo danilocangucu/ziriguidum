@@ -1,4 +1,9 @@
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
   background-color: var(--color-tertiary);
   padding: var(--space-s) 0;
   border-bottom: 3px dashed black;
