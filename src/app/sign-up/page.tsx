@@ -16,7 +16,7 @@ export default function Page() {
     <>
       <NavBar isSignUpPage={true} />
 
-      <main className="u-container">
+      <main>
         <Intro />
 
         {onlineTier && inPersonTier ? (
@@ -27,10 +27,11 @@ export default function Page() {
               schedule="Sessions take place every Monday in February 2026, from 18.30 to 19.30 (CET)."
               currentTier={onlineTier}
               solidarityTier={products.online.tiers.solidarity}
+              secondaryBackground={true}
             />
             <TierSection
               title="In Person"
-              description="Come join us in Berlin, in Neukölln."
+              description="Come join us in Berlin, in Neukölln"
               schedule="Sessions are held every Tuesday in February 2026, from 18.30 to 19.30."
               currentTier={inPersonTier}
               solidarityTier={products.inPerson.tiers.solidarity}
