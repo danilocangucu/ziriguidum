@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Footer from "./components/shared/Footer";
 
 export const charter = localFont({
   src: [
     {
       path: "/fonts/charter_regular.woff2",
       weight: "400",
-      style: "regular",
+      style: "normal",   // regular
     },
     {
       path: "/fonts/charter_italic.woff2",
       weight: "400",
-      style: "italic",
+      style: "italic",   // regular italic
     },
     {
       path: "/fonts/charter_bold.woff2",
       weight: "700",
-      style: "bold",
+      style: "normal",   // bold
     },
     {
       path: "/fonts/charter_bold_italic.woff2",
       weight: "700",
-      style: "bold italic",
+      style: "italic",   // bold italic
     },
   ],
   variable: "--font-charter",
@@ -50,6 +51,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${charter.variable} ${leMurmure.variable}`}>
         {children}
+        <Footer />
       </body>
     </html>
   );
