@@ -6,7 +6,6 @@ import {
   alertWebhookEnvVarIssue,
   getMissingWebhookEnvVars,
   handleCheckoutSessionCompleted,
-  handleCheckoutSessionExpired,
   logMissingWebhookEnvVars,
 } from "@/app/utils/stripeUtils";
 import { NextRequest, NextResponse } from "next/server";
@@ -49,7 +48,9 @@ export const POST = async (req: NextRequest) => {
       break;
 
     case "checkout.session.expired":
-      await handleCheckoutSessionExpired(session);
+      // TODO: decide if I want to handle expired sessions with emails
+      // await handleCheckoutSessionExpired(session);
+      console.log("Checkout session expired:", session.id);
       break;
 
     default:
