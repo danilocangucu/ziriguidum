@@ -1,7 +1,8 @@
 "use client";
 
-import { Tier } from "../types/products";
-import { formatTierDates } from "../utils/products";
+import { Tier } from "@/app/types/products";
+import { formatTierDates } from "@/app/utils/products";
+
 
 type CheckoutButtonsProps = {
   currentTier: Tier;
