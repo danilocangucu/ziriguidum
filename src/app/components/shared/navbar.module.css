@@ -1,0 +1,15 @@
+.navbar {
+  background-color: var(--color-tertiary);
+  padding: var(--space-s) 0;
+  border-bottom: 3px dashed black;
+}
+
+.nav-logo {
+  font-family: var(--font-lemurmure), serif;
+  font-size: var(--step-3);
+}
+
+.nav-logo .a {
+  color: black;
+  text-decoration: none;
+}
