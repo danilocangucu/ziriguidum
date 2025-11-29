@@ -1,6 +1,6 @@
 export default function Intro() {
   return (
-    <>
+    <section className="u-container padding-bottom-xs">
       <h1>Your Brazilian music journey starts soon!</h1>
       <p>
         I can’t wait to share the rhythms, stories, and little surprises of
@@ -16,6 +16,6 @@ export default function Intro() {
         Please use a valid email address when signing up so you don’t miss any
         details.
       </p>
-    </>
+    </section>
   );
 }

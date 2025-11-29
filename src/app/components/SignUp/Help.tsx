@@ -1,6 +1,7 @@
 export default function Help() {
   return (
-    <section>
+    <section className="bg-color-secondary padding-bottom-xs">
+      <section className="u-container">
       <h2>Need a hand?</h2>
       <p>
         Questions or trouble with registration? Contact me at{" "}
@@ -9,6 +10,7 @@ export default function Help() {
         </a>.
       </p>
       <p>— Danilo Canguçu</p>
+      </section>
     </section>
   );
 }
