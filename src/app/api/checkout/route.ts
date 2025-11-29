@@ -19,14 +19,7 @@ export async function POST(req: NextRequest) {
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-      payment_method_types: [
-        "card",
-        "paypal",
-        "link",
-        "klarna",
-        "sepa_debit",
-        "mobilepay",
-      ],
+      payment_method_types: ["card", "paypal", "link", "mobilepay"],
       line_items: [{ price: priceId, quantity: 1 }],
       metadata: {
         ...getProductLocationByPriceId(priceId),
