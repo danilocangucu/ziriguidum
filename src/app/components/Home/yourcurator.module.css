@@ -1,0 +1,29 @@
+.curator-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em var(--space-3xl);
+  align-items: flex-start;
+  margin-bottom: var(--space-s);
+}
+
+.curator-text {
+  flex: 2 1 60%;
+  min-width: 150px;
+}
+
+.curator-image {
+  flex: 1 1 35%;
+  max-width: 100%;
+  max-width: calc(var(--space-l) * 4);
+  height: auto;
+  transform: rotate(-5.95deg) scale(0.9);
+  transform-origin: center;
+}
+
+.margin-top-0 {
+  margin-top: 0;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0;
+}
