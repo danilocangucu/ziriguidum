@@ -1,0 +1,14 @@
+.intro {
+  text-align: center;
+  padding-top: calc(var(--space-m-2xl) * 1.1);
+}
+
+.h1 {
+  font-size: clamp(4rem, 3rem + 10vw, 12rem);
+  -webkit-text-stroke: var(--ziriguidum-stroke) black;
+  color: var(--color-tertiary);
+}
+
+.p {
+  margin-top: var(--space-2xs-xl);
+}
