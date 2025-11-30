@@ -1,4 +1,5 @@
-import Intro from "./components/Home/Intro";
+import Intro from "./components/Home/Intro/Intro";
+import YourCurator from "./components/Home/YourCurator";
 import { NavBar } from "./components/shared/NavBar";
 
 export default function HomePage() {
@@ -6,7 +7,8 @@ export default function HomePage() {
     <>
     <NavBar isSignUpPage={false} />
     <main>
-    <Intro />
+        <Intro />
+        <YourCurator />
     </main>
     </> 
   )
