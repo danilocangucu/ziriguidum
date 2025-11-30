@@ -30,8 +30,8 @@ export default function ZiriguidumDefinition() {
           <p>
         While a dictionary could define <em>ziriguidum</em> as above, its true
         essence is in the experience. In Brazil, we grow up immersed in music,
-        feeling rhythms everywhere. Now, you can experience it yourself by
-        joining my mini-course on Brazilian music!
+        feeling rhythms everywhere. <strong>Now, you can experience it yourself by
+        joining my mini-course on Brazilian music!</strong>
       </p>
       </>
   );
