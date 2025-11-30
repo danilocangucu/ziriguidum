@@ -181,6 +181,10 @@ a {
   margin-top: var(--space-xs);
 }
 
+.margin-bottom-s {
+  margin-bottom: var(--space-s);
+}
+
 .padding-bottom-3xs {
   padding-bottom: var(--space-3xs);
 }
@@ -191,4 +195,9 @@ a {
 
 .padding-bottom-s {
   padding-bottom: var(--space-s);
+}
+
+img {
+  border: 3px dashed black;
+  border-radius: 10px;
 }
