@@ -12,9 +12,19 @@
 .nav-logo {
   font-family: var(--font-lemurmure), serif;
   font-size: var(--step-3);
+  margin-top: var(--space-3xs);
+  
 }
 
-.nav-logo .a {
-  color: black;
+.text-decoration-none {
   text-decoration: none;
+}
+
+.ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-signup {
+  margin-top: calc(calc(var(--space-3xs) / 2) * -1);
 }
