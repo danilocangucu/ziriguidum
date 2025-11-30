@@ -4,10 +4,11 @@ export default function Help() {
       <section className="u-container">
       <h2>Need a hand?</h2>
       <p>
-        Questions or trouble with registration? Contact me at{" "}
+          If you have any questions or run into any issues with registration, feel free to reach out to me at{" "}
         <a href="mailto:ziriguidum@danilocangucu.net">
           ziriguidum@danilocangucu.net
-        </a>.
+          </a>.{" "}
+          I&apos;ll be happy to help!
       </p>
       <p>— Danilo Canguçu</p>
       </section>
