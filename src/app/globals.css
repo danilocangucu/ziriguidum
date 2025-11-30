@@ -146,6 +146,8 @@ a {
   --space-s-l: clamp(1.125rem, 0.5625rem + 2.5vw, 2.5rem);
   --space-m-3xl: clamp(1.6875rem, -0.6903rem + 10.5682vw, 7.5rem);
   --space-m-2xl: clamp(1.6875rem, 0.3324rem + 6.0227vw, 5rem);
+    /* Space m-xl: 27px → 60px */
+  --space-m-xl: clamp(1.6875rem, 0.8438rem + 3.75vw, 3.75rem);
   /* Space 2xs-xl: 9px → 60px */
   --space-2xs-xl: clamp(0.5625rem, -0.7415rem + 5.7955vw, 3.75rem);
 /* @link https://utopia.fyi/grid/calculator?c=360,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
@@ -173,6 +175,10 @@ a {
 
 .bg-color-quaternary {
   background-color: var(--color-quaternary);
+}
+
+.margin-top-xs {
+  margin-top: var(--space-xs);
 }
 
 .padding-bottom-3xs {

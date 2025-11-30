@@ -1,10 +1,11 @@
-import styles from "./intro.module.css";
+import Header from "./Header";
+import ZiriguidumDefinition from "./ZiriguidumDefinition";
 
 export default function Intro() {
   return (
-    <section className={`u-container ${styles.intro}`}>
-      <h1 className={styles.h1}>Ziriguidum</h1>
-      <p className={styles.p}><em>An essential Brazilian music mini-course, explained and felt.</em></p>
+    <section className={`u-container padding-bottom-s`}>
+      <Header />
+      <ZiriguidumDefinition />
     </section>
   );
 }
