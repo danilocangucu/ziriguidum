@@ -61,6 +61,11 @@ a {
     text-underline-offset: calc(var(--space-3xs) / 1.4);
 }
 
+img {
+  border: 3px dashed black;
+  border-radius: 10px;
+}
+
 @media (hover: hover) and (pointer: fine) {
     a:hover {
         text-decoration: none;
@@ -77,6 +82,7 @@ a {
 
     --ziriguidum-stroke: clamp(0.03rem, 0.03rem + 0.08vw, 0.0875rem);
     --navbar-height: calc(var(--space-s) + var(--step-3) + var(--space-s));
+    --card: clamp(20.25rem, 19.3296rem + 4.0908vw, 22.5rem);
 
   /* Step -2: 12.5px → 12.8px */
   --step--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
@@ -144,6 +150,9 @@ a {
   /* Custom pairs */
   /* Space s-l: 18px → 40px */
   --space-s-l: clamp(1.125rem, 0.5625rem + 2.5vw, 2.5rem);
+    /* Space s-xl: 18px → 60px */
+  --space-s-xl: clamp(1.125rem, 0.0511rem + 4.7727vw, 3.75rem);
+
   --space-m-3xl: clamp(1.6875rem, -0.6903rem + 10.5682vw, 7.5rem);
   --space-m-2xl: clamp(1.6875rem, 0.3324rem + 6.0227vw, 5rem);
     /* Space m-xl: 27px → 60px */
@@ -181,23 +190,26 @@ a {
   margin-top: var(--space-xs);
 }
 
+.margin-top-0 {
+  margin-top: 0;
+}
+
 .margin-bottom-s {
   margin-bottom: var(--space-s);
 }
 
-.padding-bottom-3xs {
-  padding-bottom: var(--space-3xs);
-}
-
-.padding-bottom-xs {
-  padding-bottom: var(--space-xs);
+.margin-bottom-0 {
+  margin-bottom: 0;
 }
 
 .padding-bottom-s {
   padding-bottom: var(--space-s);
 }
 
-img {
-  border: 3px dashed black;
-  border-radius: 10px;
+.padding-bottom-xs {
+  padding-bottom: var(--space-xs);
+}
+
+.padding-bottom-3xs {
+  padding-bottom: var(--space-3xs);
 }
