@@ -4,6 +4,7 @@ body {
     font-size: var(--step-0);
     line-height: calc(var(--step-0) * 1.4);
     background-color: var(--color-primary);
+    text-wrap: pretty;
 }
 
 body main {
@@ -20,6 +21,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-lemurmure), serif;
     margin-top: 0;
     margin-bottom: 0;
+    text-wrap: balance;
 }
 
 h1 {
@@ -59,12 +61,19 @@ a {
     text-underline-offset: calc(var(--space-3xs) / 1.4);
 }
 
+@media (hover: hover) and (pointer: fine) {
+    a:hover {
+        text-decoration: none;
+    }
+}
+
 
 :root {
   /* Colours */
     --color-primary: #A5E9BD;
     --color-secondary: #B1E7F9;
     --color-tertiary: #F9D949;
+    --color-quaternary: white;
 
     --ziriguidum-stroke: clamp(0.03rem, 0.03rem + 0.08vw, 0.0875rem);
     --navbar-height: calc(var(--space-s) + var(--step-3) + var(--space-s));
@@ -160,8 +169,8 @@ a {
   background-color: var(--color-secondary);
 }
 
-.bg-color-white {
-  background-color: #FFFFFF;
+.bg-color-quaternary {
+  background-color: var(--color-quaternary);
 }
 
 .padding-bottom-3xs {
