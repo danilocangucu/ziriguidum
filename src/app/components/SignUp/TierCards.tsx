@@ -2,6 +2,8 @@
 
 import { Tier } from "@/app/types/products";
 import { formatTierDates } from "@/app/utils/products";
+import Button from "../shared/Button";
+import styles from './tiercards.module.css';
 
 
 type CheckoutButtonsProps = {
@@ -30,22 +32,25 @@ export default function TierCards({
   };
 
   return (
-    <ul>
+    <ul className={styles.ul}>
       {[currentTier, solidarityTier].map((tier) => (
-        <li key={tier.label}>
-          <article>
-            <h3>{tier.label}</h3>
-            {tier.startDate && tier.endDate && (
-              <p>
-                {`(`}
+        <li key={tier.label} className={styles.li}>
+          <article className={styles.tiercard}>
+            <h3 className={styles.h3}>{tier.label}</h3>
+            <p className={styles.dates}>{tier.startDate && tier.endDate ? (
+              <em>
                 {formatTierDates(tier.startDate, tier.endDate)}
-                {`)`}
-              </p>
+              </em>
+            ) : (
+              <em>
+                No deadlines
+              </em>
             )}
-            <p>€{tier.price.toFixed(2)}</p>
-            <button type="button" onClick={() => handleCheckout(tier.priceId)}>
-              Sign up
-            </button>
+            </p>
+            <p className={styles.price}><strong>€{tier.price.toFixed(2)}</strong></p>
+            <Button classname={styles.button} type="button" onClick={() => handleCheckout(tier.priceId)}>
+              <strong>Sign up</strong>
+            </Button>
           </article>
         </li>
       ))}

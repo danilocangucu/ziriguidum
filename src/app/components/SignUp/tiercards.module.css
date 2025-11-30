@@ -1,0 +1,49 @@
+.tiercard {
+  border: 1px solid #222;
+  border-radius: var(--space-2xs);
+  padding: var(--space-m);
+  background-color: #FFFFFF;
+  box-shadow: 0px var(--space-3xs) var(--space-2xs) rgba(0,0,0,0.1);
+  width: clamp(12rem, 20vh, 14rem);
+  min-height: calc(var(--space-3xl) * 2);
+  max-height: calc(var(--space-3xl) * 3.2);
+  height: auto;
+  text-align: center;
+}
+
+.h3 {
+  font-family: var(--font-charter);
+  font-size: var(--step-1);
+  padding-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.dates {
+  font-size: var(--step--1) !important;
+  margin-top: 0 !important;
+}
+
+.price {
+  font-size: var(--step-2) !important;
+  margin-top: var(--space-xl) !important;
+  margin-bottom: var(--space-xl) !important;
+}
+
+.button {
+    width: 100%;
+}
+
+.ul {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--space-l);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+}
+
+@media (max-width: 600px) {
+  .ul {
+    justify-content: center;
+  }
+}
