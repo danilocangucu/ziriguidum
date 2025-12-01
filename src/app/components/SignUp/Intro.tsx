@@ -11,10 +11,7 @@ export default function Intro() {
         attendance.
       </p>
       <p>
-        Practical information for the sessions, including the online meeting
-        link or my home address in Berlin, will be shared after registration.
-        Please use a valid email address when signing up so you don’t miss any
-        details.
+        I’ll share all the practical details (like the online link or my home address in Berlin) by email before the course begins. Make sure your email is correct so you get everything smoothly.
       </p>
     </section>
   );
