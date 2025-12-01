@@ -12,8 +12,7 @@
 .nav-logo {
   font-family: var(--font-lemurmure), serif;
   font-size: var(--step-3);
-  margin-top: var(--space-3xs);
-  
+  margin-top: var(--space-2xs);  
 }
 
 .text-decoration-none {
@@ -26,5 +25,5 @@
 }
 
 .nav-signup {
-  margin-top: calc(calc(var(--space-3xs) / 2) * -1);
+  margin-top: calc(calc(var(--space-xs) / 1.6) * -1);
 }

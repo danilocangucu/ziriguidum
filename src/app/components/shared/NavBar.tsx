@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./navbar.module.css";
+import SignUpRouteButton from "./SignUpRouteButton";
 
 export function NavBar({ isSignUpPage }: { isSignUpPage: boolean }) {
   return (
@@ -8,12 +9,12 @@ export function NavBar({ isSignUpPage }: { isSignUpPage: boolean }) {
         <ul className={styles.ul}>
           <li className={styles['nav-logo']}>
             <Link className={styles['text-decoration-none']} href="/">Ziriguidum</Link>
-        </li>
-        {!isSignUpPage && (
+          </li>
+          {!isSignUpPage && (
             <li className={styles['nav-signup']}>
-              <Link href="/sign-up">Sign up</Link>
-        </li>
-        )}
+              <SignUpRouteButton />
+            </li>
+          )}
         </ul>
       </nav>
     </header>
