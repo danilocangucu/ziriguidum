@@ -1,4 +1,4 @@
-import { Product } from "../types/products";
+import { Product, Tier } from "../types/products";
 
 export const products: Record<"inPerson" | "online", Product> = {
   inPerson: {
@@ -65,6 +65,28 @@ export const products: Record<"inPerson" | "online", Product> = {
   },
 };
 
+export const inPersonActiveTier = getActiveTier(
+  products.inPerson.tiers,
+  new Date()
+);
+
+export const onlineActiveTier = getActiveTier(
+  products.online.tiers,
+  new Date()
+);
+
+export const solidarityTier = {
+  inPerson: products.inPerson.tiers.solidarity,
+  online: products.online.tiers.solidarity,
+};
+
+export const tierOrder: Array<keyof Product["tiers"]> = [
+  "solidarity",
+  "earlyBird",
+  "lateBird",
+  "fullPrice",
+];
+
 export function formatTierDates(startDate: Date, endDate: Date): string {
   const start = new Date(startDate);
   const end = new Date(endDate);
@@ -84,6 +106,29 @@ export function formatTierDates(startDate: Date, endDate: Date): string {
 
   // If different months: "22.12–11.01"
   return `${startDay}.${startMonth}–${endDay}.${endMonth}`;
+}
+
+export function getActiveTier(
+  tiers: Product["tiers"],
+  today: Date
+): Tier | undefined {
+  // Find current tier
+  const current = Object.values(tiers).find(
+    (tier) =>
+      tier.startDate &&
+      tier.endDate &&
+      today >= tier.startDate &&
+      today <= tier.endDate
+  );
+
+  if (current) return current;
+
+  // If no active tier, return the next upcoming tier
+  const upcoming = Object.values(tiers)
+    .filter((tier) => tier.startDate && today < tier.startDate)
+    .sort((a, b) => a.startDate!.getTime() - b.startDate!.getTime());
+
+  return upcoming[0];
 }
 
 export function getProductLocationByPriceId(priceId: string): {
