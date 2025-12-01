@@ -1,6 +1,10 @@
+import { NavBar } from "../components/shared/NavBar"
+
 export default function CancelPage() {
   return (
-    <main>
+    <>
+      <NavBar isSignUpPage={false} />
+      <main className="u-container">
       <h1>Oops!</h1>
       <p>
         It looks like your payment was not completed. You can try again on the{" "}
@@ -12,5 +16,6 @@ export default function CancelPage() {
       </p>
       <p>— Danilo Canguçu</p>
     </main>
+    </>
   );
 }
