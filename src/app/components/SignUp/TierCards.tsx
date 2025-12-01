@@ -1,7 +1,7 @@
 "use client";
 
 import { Tier } from "@/app/types/products";
-import { formatTierDates } from "@/app/utils/products";
+import { formatTierDates } from "@/app/utils/productsUtils";
 import Button from "../shared/Button";
 import styles from './tiercards.module.css';
 

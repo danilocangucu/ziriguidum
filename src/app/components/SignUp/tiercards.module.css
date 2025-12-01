@@ -1,8 +1,7 @@
 .tiercard {
-  border: 1px solid #222;
   border-radius: var(--space-2xs);
   padding: var(--space-m);
-  background-color: #FFFFFF;
+  background-color: var(--color-quaternary);
   box-shadow: 0px var(--space-3xs) var(--space-2xs) rgba(0,0,0,0.1);
   width: clamp(12rem, 20vh, 14rem);
   min-height: calc(var(--space-3xl) * 2);
