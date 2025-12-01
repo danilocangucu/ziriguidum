@@ -72,6 +72,24 @@ img {
     }
 }
 
+input[type="email"] {
+  border: 3px dashed black;
+  border-radius: var(--space-3xs);
+  padding: var(--space-2xs) var(--space-xs);
+  font-size: 1rem;
+  background-color: var(--color-tertiary);
+  color: #000;
+  outline: none;
+    width: clamp(13.5rem, 50%, 30rem);
+}
+
+input[type="email"]:focus {
+  background-color: #fff;
+  border-color: black;
+}
+
+
+
 
 :root {
   /* Colours */
@@ -186,6 +204,10 @@ img {
 
 .bg-color-quaternary {
   background-color: var(--color-quaternary);
+}
+
+.margin-top-3xs {
+  margin-top: var(--space-3xs);
 }
 
 .margin-top-xs {
