@@ -1,4 +1,4 @@
-import { getProductLocationByPriceId } from "@/app/utils/products";
+import { getProductLocationByPriceId } from "@/app/utils/productsUtils";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
