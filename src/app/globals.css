@@ -79,6 +79,8 @@ img {
     --color-secondary: #B1E7F9;
     --color-tertiary: #F9D949;
     --color-quaternary: white;
+    --color-inactive: #666666;
+    --color-light-dashed: #b3b3b3;
 
     --ziriguidum-stroke: clamp(0.03rem, 0.03rem + 0.08vw, 0.0875rem);
     --navbar-height: calc(var(--space-s) + var(--step-3) + var(--space-s));
@@ -208,6 +210,10 @@ img {
 
 .padding-bottom-xs {
   padding-bottom: var(--space-xs);
+}
+
+.padding-bottom-2xs {
+  padding-bottom: var(--space-2xs);
 }
 
 .padding-bottom-3xs {
