@@ -1,3 +1,5 @@
+import DailyZiriguidum from "./components/Home/DailyZiriguidum/DailyZiriguidum";
+import Help from "./components/Home/Help";
 import HowItWorks from "./components/Home/HowItWorks";
 import Intro from "./components/Home/Intro/Intro";
 import PreviousListeners from "./components/Home/PreviousListeners/PreviousListeners";
@@ -13,8 +15,10 @@ export default function HomePage() {
         <Intro />
         <YourCurator />
         <PreviousListeners />
+        <DailyZiriguidum />
         <HowItWorks />
         <Pricing />
+        <Help />
     </main>
     </> 
   )
