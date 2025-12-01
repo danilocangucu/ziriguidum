@@ -12,7 +12,6 @@ type SendZeptomailParams = {
 
 const myEmail = process.env.ZEPTOMAIL_MY_ADDRESS;
 const myName = "Danilo Canguçu";
-const ziriguidumHandle = "Ziriguidum mini-Course";
 
 export async function sendZeptomail({
   recipient,
@@ -61,23 +60,73 @@ export const sendPurchaseConfirmationEmail = async (params: {
 }) => {
   const { email, name, location } = params;
 
-  const subject = `${ziriguidumHandle} - Purchase confirmation`;
+  const subject = `Ziriguidum mini-Course - Purchase confirmation`;
 
-  const locationLine =
+  const onlineText = `
+    Your spot in the online group is confirmed.
+    The meetings will take place online in February on Mondays from 18:30 to 19:30 (CET, Central European Time).
+    I’ll send the meeting link in January once I decide which tool we’ll use. I’m testing a few options next week to find the easiest and most interactive solution.
+    If you’ve had experiences (good or bad) with online meeting tools and want to share them, I’d love to hear. Just reply to this email.
+    Of course, if you have any questions, feel free to reach out anytime.
+  `;
+
+  const onlineHTML = `
+<p>Your spot in the <strong>online group</strong> is confirmed.</p>
+<p>The meetings will take place online in February on Mondays from 18:30 to 19:30 (CET, Central European Time).</p>
+<p>I’ll send the meeting link in January once I decide which tool we’ll use. I’m testing a few options next week to find the easiest and most interactive solution.</p>
+<p>If you’ve had experiences (good or bad) with online meeting tools and want to share them, I’d love to hear — just reply to this email.</p>
+<p>Of course, if you have any questions, feel free to reach out anytime.</p>
+`;
+
+  const inPersonText = `
+  Your spot in the in-person group here in Berlin (Neukölln) is confirmed.
+  The meetings will take place on Tuesdays from 18:30 to 19:30 (CET, Central European Time).
+  I’ll share the exact address at the beginning of January.
+  Since the course takes place at my home, please let me know if you have any special needs so I can assist or make adjustments for your visits.
+  If you have any questions in the meantime, feel free to reach out anytime.
+  `;
+
+  const inPersonHTML = `
+<p>Your spot in the <strong>in-person group</strong> here in Berlin (Neukölln) is confirmed.</p>
+<p>The meetings will take place on Tuesdays from 18:30 to 19:30 (CET, Central European Time).</p>
+<p>I’ll share the exact address at the beginning of January.</p>
+<p>Since the course takes place at my home, please let me know if you have any special needs so I can assist or make adjustments for your visits.</p>
+<p>If you have any questions in the meantime, feel free to reach out anytime.</p>
+`;
+
+  const unknownGrouptext = `
+  We received your payment, but could not determine your group. I’ll get in touch shortly.
+
+  If you have any questions, feel free to reply to this email.
+  `;
+
+  const unknownGroupHTML = `
+  <p>We received your payment, but could not determine your group. I’ll get in touch shortly.</p>
+  <p>If you have any questions, feel free to reply to this email.</p>
+  `;
+
+  const locationString =
     location === "online"
-      ? "Your spot in the ONLINE group is confirmed."
+      ? onlineText
       : location === "inPerson"
-      ? "Your spot in the IN-PERSON group (Berlin, Neukölln) is confirmed."
-      : "We received your payment, but could not determine your group. I’ll get in touch shortly.";
+      ? inPersonText
+      : unknownGrouptext;
+
+  const locationHTML =
+    location === "online"
+      ? onlineHTML
+      : location === "inPerson"
+      ? inPersonHTML
+      : unknownGroupHTML;
 
   // --- Email to CUSTOMER ---
 
   const text = `
 Hello ${name}!
 
-Thank you for joining the ${ziriguidumHandle}!
+Thank you for joining the Ziriguidum mini-course!
 
-${locationLine}
+${locationString}
 
 If you have any questions, feel free to reply to this email.
 
@@ -87,8 +136,8 @@ ${myName}
 
   const html = `
 <p>Hello ${name}!</p>
-<p>Thank you for joining the <strong>Ziriguidum</strong> mini-course!</p>
-<p>${locationLine}</p>
+<p>Thank you for joining the <strong>Ziriguidum mini-course!</strong></p>
+${locationHTML}
 <p>If you have any questions, feel free to reply to this email.</p>
 <p>Um abraço,<br>${myName}</p>
 `;
@@ -137,7 +186,7 @@ export const sendUnverifiedPurchaseEmail = async (params: {
 }) => {
   const { email, name, logMessage } = params;
 
-  const subject = `${ziriguidumHandle} – Details to be confirmed`;
+  const subject = `Ziriguidum mini-Course – Details to be confirmed`;
 
   if (email !== "unknown") {
     // --- Email to CUSTOMER ---
@@ -326,18 +375,22 @@ export const sendWebhookErrorEmail = async (params: {
   body: string;
 }) => {
   if (!myEmail) {
-    console.warn("ZEPTOMAIL_MY_ADDRESS is not set. Skipping webhook error email.");
+    console.warn(
+      "ZEPTOMAIL_MY_ADDRESS is not set. Skipping webhook error email."
+    );
     return;
   }
 
   const { error, body } = params;
 
-  const subject = `${ziriguidumHandle} – Stripe Webhook Error`;
+  const subject = `Ziriguidum mini-Course – Stripe Webhook Error`;
 
   const text = `
 A Stripe webhook request failed before processing.
 
-Error: ${error instanceof Error ? error.message : JSON.stringify(error, null, 2)}
+Error: ${
+    error instanceof Error ? error.message : JSON.stringify(error, null, 2)
+  }
 
 ${body ? `Raw request body:\n${body}` : ""}
 
@@ -348,7 +401,9 @@ Please check the logs for more details.
 <p><strong>A Stripe webhook request failed before processing.</strong></p>
 
 <p>Error:</p>
-<pre>${error instanceof Error ? error.message : JSON.stringify(error, null, 2)}</pre>
+<pre>${
+    error instanceof Error ? error.message : JSON.stringify(error, null, 2)
+  }</pre>
 
 ${body ? `<p>Raw request body:</p><pre>${body}</pre>` : ""}
 
