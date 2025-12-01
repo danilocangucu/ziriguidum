@@ -3,7 +3,7 @@ import Help from "../components/SignUp/Help";
 import Intro from "../components/SignUp/Intro";
 import RegistrationClosed from "../components/SignUp/RegistrationClosed";
 import TierSection from "../components/SignUp/TierSection";
-import { inPersonActiveTier, onlineActiveTier, solidarityTier } from "../utils/products";
+import { inPersonActiveTier, onlineActiveTier, solidarityTier } from "../utils/productsUtils";
 
 
 export default function Page() {
