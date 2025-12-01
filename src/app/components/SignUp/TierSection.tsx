@@ -1,6 +1,5 @@
 import { Tier } from "../../types/products";
 import TierCards from "./TierCards";
-import styles from "./tiersection.module.css";
 
 interface TierSectionProps {
   title: string;
@@ -8,7 +7,7 @@ interface TierSectionProps {
   schedule: string;
   currentTier: Tier;
   solidarityTier: Tier;
-    secondaryBackground?: boolean;
+  secondaryBackground?: boolean;
 }
 
 export default function TierSection({
