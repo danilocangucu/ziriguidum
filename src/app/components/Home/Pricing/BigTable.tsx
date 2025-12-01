@@ -1,7 +1,7 @@
-import { formatTierDates, onlineActiveTier, products, tierOrder } from "@/app/utils/products";
+import { formatTierDates, onlineActiveTier, products, tierOrder } from "@/app/utils/productsUtils";
 import styles from "./bigtable.module.css";
 import { Tier } from "@/app/types/products";
-import { inPersonActiveTier, solidarityTier } from "@/app/utils/products";
+import { inPersonActiveTier, solidarityTier } from "@/app/utils/productsUtils";
 
 export default function BigTable() {
   return (

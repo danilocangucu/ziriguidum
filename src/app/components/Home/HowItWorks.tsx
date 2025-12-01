@@ -1,7 +1,6 @@
 export default function HowItWorks() {
   return (
-    <section className="bg-color-secondary padding-bottom-s">
-      <section className="u-container">
+    <section className="u-container padding-bottom-s">
         <h2>How the mini-course works</h2>
         <article>
           <p>
@@ -51,7 +50,6 @@ export default function HowItWorks() {
             </strong>
           </p>
         </article>
-      </section>
     </section>
   );
 }

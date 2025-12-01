@@ -1,4 +1,4 @@
-import { products, tierOrder, formatTierDates, inPersonActiveTier, onlineActiveTier, solidarityTier } from "@/app/utils/products";
+import { products, tierOrder, formatTierDates, inPersonActiveTier, onlineActiveTier, solidarityTier } from "@/app/utils/productsUtils";
 import { Tier } from "@/app/types/products";
 import styles from "./smalltable.module.css";
 

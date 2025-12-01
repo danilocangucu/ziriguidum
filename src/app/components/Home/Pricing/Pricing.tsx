@@ -3,7 +3,7 @@ import PricingTables from "./PricingTables";
 
 export default function Pricing() {
   return (
-    <section className="u-container padding-bottom-s">
+    <section className="u-container padding-bottom-s bg-color-secondary">
         <h2>Pricing</h2>
         <article>
           <p>
