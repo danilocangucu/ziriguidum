@@ -36,6 +36,8 @@ jobs:
             STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
             STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
             NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
+            MAILERLITE_API_KEY: ${{ secrets.MAILERLITE_API_KEY }}
+            MAILERLITE_GROUP_ID: ${{ secrets.MAILERLITE_GROUP_ID }}
         run: npm run build
 
       # 5️⃣ Archive production files
@@ -103,6 +105,8 @@ jobs:
             ZEPTOMAIL_TOKEN=${{ secrets.ZEPTOMAIL_TOKEN }}
             ZEPTOMAIL_FROM=${{ secrets.ZEPTOMAIL_FROM }}
             ZEPTOMAIL_MY_ADDRESS=${{ secrets.ZEPTOMAIL_MY_ADDRESS }}
+            MAILERLITE_API_KEY=${{ secrets.MAILERLITE_API_KEY }}
+            MAILERLITE_GROUP_ID=${{ secrets.MAILERLITE_GROUP_ID }}
             EOL
 
             echo "🚀 Starting new PM2 app..."
