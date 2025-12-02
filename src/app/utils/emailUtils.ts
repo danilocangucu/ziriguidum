@@ -65,7 +65,7 @@ export const sendPurchaseConfirmationEmail = async (params: {
   const onlineText = `
     Your spot in the online group is confirmed.
     The meetings will take place online in February on Mondays from 18:30 to 19:30 (CET, Central European Time).
-    I’ll send the meeting link in January once I decide which tool we’ll use. I’m testing a few options next week to find the easiest and most interactive solution.
+    I’ll send the meeting link in January once I decide which tool we’ll use. I’m testing a few options the easiest and most interactive solution.
     If you’ve had experiences (good or bad) with online meeting tools and want to share them, I’d love to hear. Just reply to this email.
     Of course, if you have any questions, feel free to reach out anytime.
   `;
@@ -73,7 +73,7 @@ export const sendPurchaseConfirmationEmail = async (params: {
   const onlineHTML = `
 <p>Your spot in the <strong>online group</strong> is confirmed.</p>
 <p>The meetings will take place online in February on Mondays from 18:30 to 19:30 (CET, Central European Time).</p>
-<p>I’ll send the meeting link in January once I decide which tool we’ll use. I’m testing a few options next week to find the easiest and most interactive solution.</p>
+<p>I’ll send the meeting link in January once I decide which tool we’ll use. I’m testing a few options to find the easiest and most interactive solution.</p>
 <p>If you’ve had experiences (good or bad) with online meeting tools and want to share them, I’d love to hear — just reply to this email.</p>
 <p>Of course, if you have any questions, feel free to reach out anytime.</p>
 `;
