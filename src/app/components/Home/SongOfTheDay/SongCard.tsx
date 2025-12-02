@@ -21,7 +21,7 @@ function Song() {
 
           <div className={styles["song-card-text"]}>
             <header>
-              <p className="margin-top-0 margin-bottom-0">
+              <p className="margin-top-0">
                 <strong>{song.title}</strong> by {song.artist}
               </p>
             </header>
