@@ -3,7 +3,8 @@ import PricingTables from "./PricingTables";
 
 export default function Pricing() {
   return (
-    <section className="u-container padding-bottom-s bg-color-secondary">
+    <section className="bg-color-secondary padding-bottom-s">
+      <section className="u-container">
         <h2>Pricing</h2>
         <article>
           <p>
@@ -15,6 +16,7 @@ export default function Pricing() {
           <PricingTables />
           <SignUpRouteButton />
         </article>
+      </section>
       </section>
   );
 }

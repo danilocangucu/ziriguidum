@@ -80,7 +80,9 @@ input[type="email"] {
   background-color: var(--color-tertiary);
   color: #000;
   outline: none;
-    width: clamp(13.5rem, 50%, 30rem);
+  flex: 1 1 100%; /* grow, shrink, basis 100% */
+  max-width: 30rem; /* keep the max width */
+  min-width: 10rem; /* keep the min width */
 }
 
 input[type="email"]:focus {
