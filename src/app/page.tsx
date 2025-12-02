@@ -1,4 +1,4 @@
-import DailyZiriguidum from "./components/Home/DailyZiriguidum/DailyZiriguidum";
+import SongOfTheDay from "./components/Home/SongOfTheDay/SongOfTheDay";
 import Help from "./components/Home/Help";
 import HowItWorks from "./components/Home/HowItWorks";
 import Intro from "./components/Home/Intro/Intro";
@@ -15,7 +15,7 @@ export default function HomePage() {
         <Intro />
         <YourCurator />
         <PreviousListeners />
-        <DailyZiriguidum />
+        <SongOfTheDay />
         <HowItWorks />
         <Pricing />
         <Help />
