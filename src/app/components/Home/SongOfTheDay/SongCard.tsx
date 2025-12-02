@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./songcard.module.css";
 import React from "react";
 
-const song = songs[1];
+const song = songs[2];
 
 function Song() {
   return (
