@@ -56,7 +56,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
                 <main className="u-container">
                     <h1>Hmm… something’s not quite right.</h1>
                     <p>
-                        ${errorMessage}
+                        {errorMessage}
                     If you arrived here by mistake, don’t worry — you can return to the
                     homepage or try the process again.
                 </p>
