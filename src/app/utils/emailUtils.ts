@@ -128,8 +128,6 @@ Thank you for joining the Ziriguidum mini-course!
 
 ${locationString}
 
-If you have any questions, feel free to reply to this email.
-
 Um abraço,
 ${myName}
 `;
@@ -138,7 +136,6 @@ ${myName}
 <p>Hello ${name}!</p>
 <p>Thank you for joining the <strong>Ziriguidum mini-course!</strong></p>
 ${locationHTML}
-<p>If you have any questions, feel free to reply to this email.</p>
 <p>Um abraço,<br>${myName}</p>
 `;
 
