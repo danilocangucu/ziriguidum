@@ -60,7 +60,7 @@ export const sendPurchaseConfirmationEmail = async (params: {
 }) => {
   const { email, name, location } = params;
 
-  const subject = `Ziriguidum mini-Course - Purchase confirmation`;
+  const subject = `Ziriguidum mini-course - Purchase confirmation`;
 
   const onlineText = `
     Your spot in the online group is confirmed.
@@ -183,7 +183,7 @@ export const sendUnverifiedPurchaseEmail = async (params: {
 }) => {
   const { email, name, logMessage } = params;
 
-  const subject = `Ziriguidum mini-Course – Details to be confirmed`;
+  const subject = `Ziriguidum mini-course – Details to be confirmed`;
 
   if (email !== "unknown") {
     // --- Email to CUSTOMER ---
@@ -380,7 +380,7 @@ export const sendWebhookErrorEmail = async (params: {
 
   const { error, body } = params;
 
-  const subject = `Ziriguidum mini-Course – Stripe Webhook Error`;
+  const subject = `Ziriguidum mini-course – Stripe Webhook Error`;
 
   const text = `
 A Stripe webhook request failed before processing.
