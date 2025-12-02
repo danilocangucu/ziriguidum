@@ -10,7 +10,7 @@ import { NavBar } from "./components/shared/NavBar";
 export default function HomePage() {
   return (
     <>
-    <NavBar isSignUpPage={false} />
+      <NavBar showSignUpButton={false} />
     <main>
         <Intro />
         <YourCurator />

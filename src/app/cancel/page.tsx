@@ -3,7 +3,7 @@ import { NavBar } from "../components/shared/NavBar"
 export default function CancelPage() {
   return (
     <>
-      <NavBar isSignUpPage={false} />
+      <NavBar showSignUpButton={false} />
       <main className="u-container">
       <h1>Oops!</h1>
       <p>

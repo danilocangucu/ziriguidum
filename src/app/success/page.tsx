@@ -14,7 +14,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
         if (!session_id) {
             return (
                 <>
-                    <NavBar isSignUpPage={false} />
+                    <NavBar showSignUpButton={false} />
                     <main className="u-container">
                         <h1>Hmm… something’s not quite right.</h1>
                         <p>
@@ -52,7 +52,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
     if (errorMessage) {
         return (
             <>
-                <NavBar isSignUpPage={false} />
+                <NavBar showSignUpButton={false} />
                 <main className="u-container">
                     <h1>Hmm… something’s not quite right.</h1>
                     <p>
@@ -79,7 +79,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
 
     return (
         <>
-            <NavBar isSignUpPage={false} />
+            <NavBar showSignUpButton={true} />
             <main className="u-container">
                 <h1>Obrigado{name ? `, ${name}` : ""}!</h1>
               <p>Thank you for joining the Ziriguidum mini-course!</p>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <NavBar isSignUpPage={true} />
+      <NavBar showSignUpButton={true} />
 
       <main>
         <Intro />

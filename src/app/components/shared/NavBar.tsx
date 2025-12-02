@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./navbar.module.css";
 import SignUpRouteButton from "./SignUpRouteButton";
 
-export function NavBar({ isSignUpPage }: { isSignUpPage: boolean }) {
+export function NavBar({ showSignUpButton }: { showSignUpButton: boolean }) {
   return (
     <header className={styles.navbar}>
       <nav className="u-container">
@@ -10,7 +10,7 @@ export function NavBar({ isSignUpPage }: { isSignUpPage: boolean }) {
           <li className={styles['nav-logo']}>
             <Link className={styles['text-decoration-none']} href="/">Ziriguidum</Link>
           </li>
-          {!isSignUpPage && (
+          {!showSignUpButton && (
             <li className={styles['nav-signup']}>
               <SignUpRouteButton />
             </li>
