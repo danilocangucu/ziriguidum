@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { NavBar } from "../components/shared/NavBar";
 import Help from "../components/SignUp/Help";
 import Intro from "../components/SignUp/Intro";
@@ -5,6 +6,10 @@ import RegistrationClosed from "../components/SignUp/RegistrationClosed";
 import TierSection from "../components/SignUp/TierSection";
 import { inPersonActiveTier, onlineActiveTier, solidarityTier } from "../utils/productsUtils";
 
+export const metadata: Metadata = {
+  title: "Ziriguidum - Sign Up",
+  description: "Join the Ziriguidum mini-course and explore essential Brazilian music.",
+};
 
 export default function Page() {
   return (

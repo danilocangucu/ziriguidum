@@ -40,6 +40,28 @@ const leMurmure = localFont({
 export const metadata: Metadata = {
   title: "Ziriguidum",
   description: "An essential Brazilian music mini-course, explained and felt.",
+  openGraph: {
+    title: "Ziriguidum",
+    description: "An essential Brazilian music mini-course, explained and felt.",
+    url: "https://ziriguidum.danilocangucu.net",
+    siteName: "Ziriguidum",
+    images: [
+      {
+        url: "/ziriguidum-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Ziriguidum cover image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ziriguidum",
+    description: "An essential Brazilian music mini-course, explained and felt.",
+    images: ["/ziriguidum-preview.png"],
+  },
 };
 
 export default function RootLayout({
