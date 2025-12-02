@@ -17,9 +17,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // TODO add mobilepay when available in stripe for your account
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-      payment_method_types: ["card", "paypal", "link", "mobilepay"],
+      payment_method_types: ["card", "paypal", "link"],
       line_items: [{ price: priceId, quantity: 1 }],
       metadata: {
         ...getProductLocationByPriceId(priceId),
