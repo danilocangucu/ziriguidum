@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "Ziriguidum",
     images: [
       {
-        url: "/ziriguidum-preview.png",
+        url: "https://ziriguidum.danilocangucu.net/ziriguidum-preview.png",
         width: 1200,
         height: 630,
         alt: "Ziriguidum cover image",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ziriguidum",
     description: "An essential Brazilian music mini-course, explained and felt.",
-    images: ["/ziriguidum-preview.png"],
+    images: ["https://ziriguidum.danilocangucu.net/ziriguidum-preview.png"],
   },
 };
 
