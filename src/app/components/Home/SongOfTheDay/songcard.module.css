@@ -32,7 +32,7 @@
   display: flex;
   flex: 2 1 65%;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .listener-card-transform {

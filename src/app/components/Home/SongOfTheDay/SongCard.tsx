@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./songcard.module.css";
 import React from "react";
 
-const song = songs[0];
+const song = songs[1];
 
 function Song() {
   return (
@@ -13,7 +13,7 @@ function Song() {
         <article className={styles["song-card-details"]}>
           <Image
             className={`${styles["song-card-image"]} ${styles["listener-card-transform"]}`}
-            src={`/songs/${song.image}`}
+            src={`/artists/${song.image}`}
             alt={song.alt}
             width={150}
             height={150}
@@ -21,7 +21,7 @@ function Song() {
 
           <div className={styles["song-card-text"]}>
             <header>
-              <p className="margin-top-0">
+              <p className="margin-top-0 margin-bottom-0">
                 <strong>{song.title}</strong> by {song.artist}
               </p>
             </header>
