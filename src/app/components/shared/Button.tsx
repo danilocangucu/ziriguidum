@@ -1,8 +1,8 @@
 import styles from './button.module.css'
 
-function Button({ type, onClick, children, classname }: { type: "button" | "submit" | "reset"; onClick?: () => void; children: React.ReactNode; classname?: string }) {
+function Button({ type, onClick, children, className }: { type: "button" | "submit" | "reset"; onClick?: () => void; children: React.ReactNode; className?: string }) {
   return (
-    <button className={`${styles.button} ${classname || ''}`} type={type} onClick={onClick}>
+    <button className={`${styles.button} ${className || ''}`} type={type} onClick={onClick}>
       {children}
     </button>
   )
