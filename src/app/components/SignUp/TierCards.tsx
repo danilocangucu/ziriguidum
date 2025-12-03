@@ -47,8 +47,8 @@ export default function TierCards({
               </em>
             )}
             </p>
-            <p className={styles.price}><strong>€{tier.price.toFixed(2)}</strong></p>
-            <Button classname={styles.button} type="button" onClick={() => handleCheckout(tier.priceId)}>
+            <p className={styles.price}><strong>€{tier.prices.fourSessions.toFixed(2)}</strong></p>
+            <Button classname={styles.button} type="button" onClick={() => handleCheckout(tier.priceIds.fourSessions)}>
               <strong>Sign up</strong>
             </Button>
           </article>
