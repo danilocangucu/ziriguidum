@@ -6,33 +6,43 @@
   margin-bottom: var(--space-s);
 
   background-color: var(--color-quaternary);
-  box-shadow: 0px var(--space-3xs) var(--space-2xs) rgba(0,0,0,0.1);
+  box-shadow: 0px var(--space-3xs) var(--space-2xs) rgba(0, 0, 0, 0.1);
   border-radius: var(--space-s-m);
   padding-bottom: calc(var(--space-s));
   padding-top: var(--space-xs);
-  padding-right: var(--space-m);
-  padding-left: var(--space-m);
+  padding-right: var(--space-s);
+  padding-left: var(--space-s);
 }
 
 .big-table th {
-  padding: var(--space-2xs) var(--space-s);
+  padding: var(--space-2xs) var(--space-xs);
   border-bottom: 3px dashed black;
 }
 
 .big-table td {
-  padding: var(--space-2xs) var(--space-s);
+  padding: var(--space-2xs) var(--space-xs);
 }
 
-.big-table tbody tr:first-child td {
+.big-table tbody tr:first-child td:first-child,
+.big-table tbody tr:nth-child(2) td
+ {
+  border-bottom: 2px dashed var(--color-light-dashed);
+}
+
+.big-table tbody tr:nth-child(odd) td:not(:first-child) {
   border-bottom: 1px dashed var(--color-light-dashed);
 }
 
 .inactive-tier {
-    color: var(--color-inactive);
+  color: var(--color-inactive);
 }
 
-@media (max-width: 875px) {
+@media (max-width: 900.99px) {
   .big-table {
+    display: none;
+  }
+
+  .big-table-button {
     display: none;
   }
 }

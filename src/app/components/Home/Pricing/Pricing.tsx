@@ -1,4 +1,3 @@
-import SignUpRouteButton from "../../shared/SignUpRouteButton";
 import PricingTables from "./PricingTables";
 
 export default function Pricing() {
@@ -14,7 +13,6 @@ export default function Pricing() {
             For those who cannot afford the full price, there is a <strong>solidarity price that will always remain the same</strong>, so everyone can join and experience the music.
           </p>
           <PricingTables />
-          <SignUpRouteButton />
         </article>
       </section>
       </section>
