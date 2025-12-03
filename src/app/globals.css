@@ -90,9 +90,6 @@ input[type="email"]:focus {
   border-color: black;
 }
 
-
-
-
 :root {
   /* Colours */
     --color-primary: #A5E9BD;
@@ -104,7 +101,6 @@ input[type="email"]:focus {
 
     --ziriguidum-stroke: clamp(0.03rem, 0.03rem + 0.08vw, 0.0875rem);
     --navbar-height: calc(var(--space-s) + var(--step-3) + var(--space-s));
-    --card: clamp(20.25rem, 19.3296rem + 4.0908vw, 22.5rem);
 
   /* Step -2: 12.5px → 12.8px */
   --step--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
