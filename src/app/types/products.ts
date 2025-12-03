@@ -1,7 +1,13 @@
 export interface Tier {
   label: string;
-  price: number;
-  priceId: string;
+  prices: {
+    fourSessions: number;
+    oneSession: number;
+  };
+  priceIds: {
+    fourSessions: string;
+    oneSession: string;
+  };
   startDate?: Date;
   endDate?: Date;
 }
