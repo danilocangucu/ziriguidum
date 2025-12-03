@@ -38,12 +38,26 @@ export const songs = [
     description: `If this wasn't the most listened song in Brazil in 1999, for sure it was the second. Written by Peninha, "Sozinho" ("Alone") was a massive hit for Caetano, who included it in his live album "Prenda Minha". This album sold over 1 million copies in Brazil alone. The track is a heartfelt ballad about solitude and longing and became one of Caetano's signature songs.`,
     quote:
       "When we care for someone, of course we take care of them\nYou say you love me, but it’s words without meaning",
-    image: "caetano-veloso.png",
     url: {
       spotify: "https://open.spotify.com/track/02a8cGumnKuEPgoCzmalJp",
       youtube: "https://www.youtube.com/watch?v=z7yWWsI5KcQ",
     },
+    image: "caetano-veloso.png",
     alt: "Caetano Veloso",
+  },
+  {
+    id: 4,
+    date: "2025-12-04",
+    title: "Baile de Máscaras (Recarnaval)",
+    artist: "Bala Desejo",
+    description: `Bala Desejo, a quartet from Rio de Janeiro, mixes samba, bossa nova, and MPB in a way that instantly evokes the 70s when their voices blend. This hit is from their debut album "SIM SIM SIM" ("YES YES YES"), from 2022. The record was widely praised and won the Latin Grammy for Best Portuguese Language Contemporary Pop Album. Their sound is interestingly both nostalgic and fresh.`,
+    quote: "Sun burning the street's pavement\nAs dressed as it is bare",
+    url: {
+      spotify: "https://open.spotify.com/track/7M8ufi5rmgnWpJfPidV4g8",
+      youtube: "https://www.youtube.com/watch?v=tUfQaAWSh_k?",
+    },
+    image: "bala-desejo.png",
+    alt: "Bala Desejo",
   },
   // {
   //   id: 0,
@@ -55,14 +69,7 @@ export const songs = [
   //   quote: "",
   //   alt: "Djavan",
   // },
-  // {
-  //   id: 0,
-  //   date: "",
-  //   title: "Baile de Máscaras",
-  //   artist: "Bala Desejo",
-  //   description: `Bala Desejo, a quartet from Rio de Janeiro, mixes samba, bossa nova, and MPB in a way that instantly evokes the 70s when their voices blend. This hit is from their debut album "SIM SIM SIM", "YES YES YES", from 2022. The record was widely praised and won the Latin Grammy for Best Portuguese Language Contemporary Pop Album`,
-  //   alt: "Bala Desejo",
-  // },
+
   // {
   //   id: 0,
   //   date: "",
