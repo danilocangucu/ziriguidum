@@ -1,19 +1,20 @@
 "use client";
 
-import { Tier } from "@/app/types/products";
+import { SessionType, Tier } from "@/app/types/products";
 import { formatTierDates } from "@/app/utils/productsUtils";
 import Button from "../shared/Button";
 import styles from './tiercards.module.css';
 
-
 type CheckoutButtonsProps = {
   currentTier: Tier;
   solidarityTier: Tier;
+  sessionType: SessionType;
 };
 
 export default function TierCards({
   currentTier,
   solidarityTier,
+  sessionType
 }: CheckoutButtonsProps) {
   const handleCheckout = async (priceId: string) => {
     try {
@@ -33,7 +34,11 @@ export default function TierCards({
 
   return (
     <ul className={styles.ul}>
-      {[currentTier, solidarityTier].map((tier) => (
+      {[solidarityTier, currentTier].map((tier) => {
+        const price = tier.prices[sessionType];
+        const priceId = tier.priceIds[sessionType];
+
+        return (
         <li key={tier.label} className={styles.li}>
           <article className={styles.tiercard}>
             <h3 className={styles.h3}>{tier.label}</h3>
@@ -47,13 +52,14 @@ export default function TierCards({
               </em>
             )}
             </p>
-            <p className={styles.price}><strong>€{tier.prices.fourSessions.toFixed(2)}</strong></p>
-            <Button classname={styles.button} type="button" onClick={() => handleCheckout(tier.priceIds.fourSessions)}>
+              <p className={styles.price}><strong>€{price.toFixed(2)}</strong></p>
+              <Button className={styles.button} type="button" onClick={() => handleCheckout(priceId)}>
               <strong>Sign up</strong>
             </Button>
           </article>
         </li>
-      ))}
+        )
+      })}
     </ul>
   );
 }

@@ -168,7 +168,7 @@ export function formatTierDates(startDate: Date, endDate: Date): string {
 export function getActiveTier(
   tiers: Product["tiers"],
   today: Date
-): Tier | undefined {
+): Tier | null {
   // Find current tier
   const current = Object.values(tiers).find(
     (tier) =>
@@ -185,7 +185,10 @@ export function getActiveTier(
     .filter((tier) => tier.startDate && today < tier.startDate)
     .sort((a, b) => a.startDate!.getTime() - b.startDate!.getTime());
 
-  return upcoming[0];
+  if (upcoming.length > 0) return upcoming[0];
+
+  // If no upcoming tier, return null
+  return null;
 }
 
 // TODO check if needs to be updated for new price structure

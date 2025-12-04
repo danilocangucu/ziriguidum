@@ -3,8 +3,9 @@ import { NavBar } from "../components/shared/NavBar";
 import Help from "../components/SignUp/Help";
 import Intro from "../components/SignUp/Intro";
 import RegistrationClosed from "../components/SignUp/RegistrationClosed";
-import TierSection from "../components/SignUp/TierSection";
-import { inPersonActiveTier, onlineActiveTier, solidarityTier } from "../utils/productsUtils";
+import { inPersonActiveTier, onlineActiveTier } from "../utils/productsUtils";
+import OnlineTiers from "../components/SignUp/OnlineTiers";
+import InPersonTiers from "../components/SignUp/InPersonTiers";
 
 export const metadata: Metadata = {
   title: "Ziriguidum - Sign Up",
@@ -18,24 +19,10 @@ export default function Page() {
 
       <main>
         <Intro />
-
         {inPersonActiveTier && onlineActiveTier ? (
           <>
-            <TierSection
-              title="Online"
-              description="Join us from anywhere"
-              schedule="Sessions take place every Monday in February 2026, from 18.30 to 19.30 (CET)."
-              currentTier={onlineActiveTier}
-              solidarityTier={solidarityTier.online}
-              secondaryBackground={true}
-            />
-            <TierSection
-              title="In Person"
-              description="Come join us in Berlin, in Neukölln"
-              schedule="Sessions are held every Tuesday in February 2026, from 18.30 to 19.30."
-              currentTier={inPersonActiveTier}
-              solidarityTier={solidarityTier.inPerson}
-            />
+            <OnlineTiers onlineActiveTier={onlineActiveTier} />
+            <InPersonTiers inPersonActiveTier={inPersonActiveTier} />
             <Help />
           </>
         ) : (

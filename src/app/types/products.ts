@@ -21,3 +21,5 @@ export interface Product {
     fullPrice?: Tier;
   };
 }
+
+export type SessionType = "fourSessions" | "oneSession";
