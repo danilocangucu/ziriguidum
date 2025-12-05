@@ -59,25 +59,22 @@ export const songs = [
     image: "bala-desejo.png",
     alt: "Bala Desejo",
   },
-  // {
-  //   id: 0,
-  //   date: "",
-  //   title: "Nereci",
-  //   artist: "Djavan feat. Marizinha",
-  //   description:
-  //     "I remember hearing Djavan songs from 90-2000s when I was a kid. Only when I was on my 20s I got in touch with his older work, which drove many people to adore him in the 70s and 80s. This catchy song is from his second album and probably one of my favorites from that period.",
-  //   quote: "",
-  //   alt: "Djavan",
-  // },
+  {
+    id: 5,
+    date: "2025-12-04",
+    title: "Nereci",
+    artist: "Djavan feat. Marizinha",
+    description:
+      "I’ve always admired Djavan for his inventive melodies and the way he blends Brazilian grooves with jazz touches. Nereci, from his second album, shows exactly why he won over audiences in the 70s and 80s. The song is irresistibly catchy, driven by a brilliant, flowing bassline that gives it both energy and elegance, making it one of the highlights of that period.",
+    quote: "Will she come with today’s tide?\nQueen of the sea",
+    url: {
+      spotify: "https://open.spotify.com/track/6kbq7yE8CbAqWkP1opSd7v",
+      youtube: "https://youtu.be/2ZztzJaq1iU",
+    },
+    image: "djavan.png",
+    alt: "Djavan",
+  },
 
-  // {
-  //   id: 0,
-  //   date: "",
-  //   title: "Sozinho",
-  //   artist: "Caetano Veloso",
-  //   description: `If this wasn't the most listened song in Brazil in 1999, for sure it was the second. Written by Peninha, "Sozinho" ("Alone") was a massive hit for Caetano, who included it in his live album "Prenda Minha". This album sold over 1 million copies in Brazil alone. The track is a heartfelt ballad about solitude and longing and became one of Caetano's signature songs.`,
-  //   alt: "Caetano Veloso",
-  // },
   // {
   //   id: 0,
   //   date: "",

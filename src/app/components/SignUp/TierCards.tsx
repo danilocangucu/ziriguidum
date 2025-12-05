@@ -5,7 +5,6 @@ import { formatTierDates } from "@/app/utils/productsUtils";
 import Button from "../shared/Button";
 import styles from './tiercards.module.css';
 
-
 type CheckoutButtonsProps = {
   currentTier: Tier;
   solidarityTier: Tier;
