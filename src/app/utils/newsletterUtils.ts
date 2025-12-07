@@ -1,5 +1,19 @@
 export const songs = [
   {
+    id: 0,
+    date: "2025-12-05",
+    title: "",
+    artist: "",
+    description: "",
+    quote: "",
+    url: {
+      spotify: "",
+      youtube: "",
+    },
+    image: "",
+    alt: "",
+  },
+  {
     id: 1,
     date: "2025-12-01",
     title: "Ziriguidum",
@@ -74,7 +88,50 @@ export const songs = [
     image: "djavan.png",
     alt: "Djavan",
   },
-
+  {
+    id: 6,
+    date: "2025-12-05",
+    title: "",
+    artist: "",
+    description: "",
+    quote: "",
+    url: {
+      spotify: "",
+      youtube: "",
+    },
+    image: "",
+    alt: "",
+  },
+  {
+    id: 7,
+    date: "2025-12-07",
+    title: "Prudência",
+    artist: "Maria Bethânia",
+    description:
+      "Bethânia, Caetano Veloso’s sister, is now 79 and still going strong. This track, written by Tim Bernardes, comes from her 2021 album Noturno (Nocturnal). The song makes an interesting point: living too cautiously can lead to a dull life. If change is the only constant, I think it’s worth taking a chance now and then. Bethânia’s deep and velvety voice filled with emotions makes this track one of my favorites of hers.",
+    quote:
+      "Prudence, don’t come talking to me about prudence\nThe passions that threw me off balance\nAre the ones that made me who I am",
+    url: {
+      spotify: "https://open.spotify.com/track/7byA56peap14u8Pj3CcMgJ",
+      youtube: "https://youtu.be/Q6am8PNsRQ4",
+    },
+    image: "maria-bethania.png",
+    alt: "Maria Bethânia",
+  },
+  // {
+  //   id: 0,
+  //   date: "2025-12-05",
+  //   title: "",
+  //   artist: "",
+  //   description: "",
+  //   quote: "",
+  //   url: {
+  //     spotify: "",
+  //     youtube: "",
+  //   },
+  //   image: "",
+  //   alt: "",
+  // },
   // {
   //   id: 0,
   //   date: "",
